@@ -1,4 +1,3 @@
-<!-- ViewTasks.jsp -->
 <%@page import="beans.Task"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -8,6 +7,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Display Tasks</title>
+<script>
+  function checkdate(event){
+    var taskDate = document.getElementsByName("taskDate")[0].value;
+    var currentDate = new Date().toISOString().split('T')[0];
+    
+    if(taskDate < currentDate){
+      alert("Cannot enter past date");
+      event.preventDefault();
+    }
+  }
+</script>
 </head>
 <body>
   <p align="right">
@@ -22,7 +32,7 @@
     Welcome <%=flname%>, <a href="./LogoutServlet">Logout</a>  
   </p>
   
-  <form method="post" action="./AddTaskServlet">
+  <form method="post" action="./AddTaskServlet" onsubmit="checkdate(event)">
     <table border="1" align="center" width="20%">
       <tr>
         <th>Task Name</th>

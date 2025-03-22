@@ -25,7 +25,8 @@ public class AddTaskServlet extends HttpServlet {
     ServletContext context=getServletContext();
     
     String taskName=request.getParameter("taskName").trim();
-    String taskDate=request.getParameter("taskDate").trim();    
+    String taskDate=request.getParameter("taskDate").trim();
+    taskDate    
     int taskStatus=Integer.parseInt(request.getParameter("taskStatus").trim());
     int regId=((Integer)session.getAttribute("regId")).intValue();
     
